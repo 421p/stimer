@@ -81,8 +81,7 @@ class Timer implements TimerInterface
             $this->isActive = false;
             $this->internalTimer->cancel();
 
-            $elapsed = microtime(true) - $this->startTime;
-            $this->leftInterval -= $elapsed;
+            $this->leftInterval -= $this->elapsed();
         });
     }
 
@@ -95,12 +94,18 @@ class Timer implements TimerInterface
 
     protected function start()
     {
+        $this->isActive = true;
         $this->startTime = microtime(true);
         $this->internalTimer = $this->loop->addTimer($this->leftInterval, $this->callback);
     }
 
     public function getLeftInterval(): float
     {
-        return $this->leftInterval;
+        return $this->isActive ? $this->interval - $this->elapsed() : $this->leftInterval;
+    }
+
+    private function elapsed()
+    {
+        return microtime(true) - $this->startTime;
     }
 }
