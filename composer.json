@@ -15,6 +15,7 @@
         }
     },
     "require": {
+        "php": ">=7",
         "react/event-loop": "^0.4.3"
     }
 }
