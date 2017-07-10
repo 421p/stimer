@@ -1,0 +1,20 @@
+{
+    "name": "421p/stimer",
+    "description": "React-Eventloop compatible pausable timer.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "421p",
+            "email": "andrew.bakal@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Stimer\\" : "src"
+        }
+    },
+    "require": {
+        "react/event-loop": "^0.4.3"
+    }
+}
